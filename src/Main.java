@@ -1,3 +1,7 @@
+import Controller.Controller;
+import Model.Model;
+import View.View;
+
 import javax.swing.*;
 
 /** Cette classe permet de créer une fenêtre avec un "affichage" dedans */
@@ -5,11 +9,14 @@ public class Main{
 
     /** le constructeur de la fenêtre */
     public Main() {
-        JFrame window = new JFrame("titre de la fenêtre");
-        Affichage flappy=  new Affichage(new Etat());
+        JFrame window = new JFrame("Flappy !");
+        Model flappy= new Model();
+        View flappyView=  new View(flappy);
+        //this call adds the mouse listener to the window
+        Controller flappyController= new Controller(flappyView, window);
 
         /* ajout de l'affichage */
-        window.add(flappy);
+        window.add(flappyView);
 
         /* assemblage et fin */
         window.pack();
