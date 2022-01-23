@@ -20,6 +20,7 @@ public class View extends JPanel{
     /** Le constructeur par défaut crée un panel vide */
     public View(Model e) {
         this.model = e;
+        //TODO ask prof about this
         this.path= new Path(this);
         setPreferredSize(new Dimension(ScreenWidth, ScreenHeight));
         (new RefreshView(this)).start();
