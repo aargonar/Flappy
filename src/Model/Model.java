@@ -1,12 +1,18 @@
 package Model;
-import View.*;
+import View.View;
+
+import java.awt.*;
+import java.util.ArrayList;
+
 public class Model {
     /**Attributs: coordonnées de flappy*/
-    private int FlappyX =300;
-    private int FlappyY =100;
+    private int FlappyX =View.ScreenWidth/2-FlappyWidth/2;
+    private int FlappyY =View.ScreenHeight/2-FlappyHeight/2;
+
     /**Variables: hauteur et largeur de flappy*/
     public static final int FlappyHeight =100;
     public static final int FlappyWidth =200;
+
     /**Variables: Saut et Descente de flappy*/
     public static final int Jump =50;
     public static final int Fall =25;
@@ -22,16 +28,16 @@ public class Model {
 
     /** Methode qui modifie hauteur de flappy si les contraintes definies sur affichage verif*/
     public void jump() {
-        int delta= FlappyX - Jump;
+        int delta= FlappyY - Jump;
         if (delta >=0 ) {
-            FlappyX =delta;
+            FlappyY =delta;
         }
     }
 
     public void moveDownn(){
-        int delta= FlappyX + Fall;
+        int delta= FlappyY + Fall;
         if (delta < View.ScreenHeight-FlappyHeight) {
-            FlappyX =delta;
+            FlappyY =delta;
         }
     }
 

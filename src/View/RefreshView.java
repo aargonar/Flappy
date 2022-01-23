@@ -1,7 +1,5 @@
 package View;
 
-import View.View;
-
 public class RefreshView extends Thread{
     public View view;
 

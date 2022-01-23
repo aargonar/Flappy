@@ -1,5 +1,6 @@
 import Controller.Controller;
 import Model.Model;
+import Model.Path;
 import View.View;
 
 import javax.swing.*;
@@ -14,7 +15,6 @@ public class Main{
         View flappyView=  new View(flappy);
         //this call adds the mouse listener to the window
         Controller flappyController= new Controller(flappyView, window);
-
         /* ajout de l'affichage */
         window.add(flappyView);
 
