@@ -1,9 +1,6 @@
 package Model;
 import View.View;
 
-import java.awt.*;
-import java.util.ArrayList;
-
 public class Model {
     /**Attributs: coordonnées de flappy*/
     private int FlappyX =View.ScreenWidth/2-FlappyWidth/2;

@@ -1,7 +1,5 @@
 package Model;
 
-import View.View;
-
 /**Cette classe est une Thread qui descends le modele flappy en X
  * quand l'utilisateur click pas sur l'ecran*/
 public class RefreshPath extends Thread{
