@@ -11,8 +11,10 @@ public class Main{
     /** le constructeur de la fenêtre */
     public Main() {
         JFrame window = new JFrame("Flappy !");
-        Model flappy= new Model();
-        View flappyView=  new View(flappy);
+        Path flappyPath= new Path();
+        Model flappy= new Model(flappyPath);
+        View flappyView=  new View(flappy, flappyPath);
+
         //this call adds the mouse listener to the window
         Controller flappyController= new Controller(flappyView, window);
         /* ajout de l'affichage */

@@ -12,30 +12,37 @@ public class View extends JPanel{
 
     private static final long serialVersionUID = 1L;
     /** Les constantes */
-    public static final int ScreenHeight =600;
-    public static final int ScreenWidth =1000;
     public Model model;
     public Path path;
 
     /** Le constructeur par défaut crée un panel vide */
-    public View(Model e) {
+    public View(Model e, Path p) {
         this.model = e;
+        this.path=p;
         //TODO ask prof about this
-        this.path= new Path(this);
-        setPreferredSize(new Dimension(ScreenWidth, ScreenHeight));
+        setPreferredSize(new Dimension(model.ScreenWidth, model.ScreenHeight));
         (new RefreshView(this)).start();
     }
     /**Methode paint qui est appelé quand on veut reafficher la view */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+
         /** Draws Flappy ! */
         g.drawOval(model.getFlappyX(), model.getFlappyY(),model.FlappyWidth,model.FlappyHeight);
+
         /** Draws the line */
         g.setColor(Color.RED);
         //Dessine jusqu'a la coord en dehors du window pour simuler continuation de la ligne vers l'infinie
         for(int i=0; i<this.path.getPointList().size()-1; i++){
             g.drawLine(this.path.getPointList().get(i).x,this.path.getPointList().get(i).y,this.path.getPointList().get(i+1).x,this.path.getPointList().get(i+1).y);
+        }
+
+        /**Affichage du score
+         * On verifie que le game a commencé: si le score est 0 ou plus on l'affiche
+         * Sinon on l'affiche pas, le game n'as pas encore commencé*/
+        if(this.path.getScore()>=0) {
+            g.drawString("SCORE:" + String.valueOf(this.path.getScore()), 50, 50);
         }
     }
 

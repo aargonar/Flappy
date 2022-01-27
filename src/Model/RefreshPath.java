@@ -15,10 +15,11 @@ public class RefreshPath extends Thread{
         /**Moves flappy downwards contantly*/
         while(true){
             path.moveForward();
+            //TODO check for collision
             path.updatePath();
             /**Attends quelques secondes avant de descendre flappy*/
             try {
-                Thread.sleep(1000);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

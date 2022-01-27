@@ -17,9 +17,11 @@ public class Fly extends Thread{
         /**Moves flappy downwards contantly*/
         while(true){
             model.moveDownn();
+            //model.testLost();
+            //TODO check for collision
             /**Attends quelques secondes avant de descendre flappy*/
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
