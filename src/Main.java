@@ -13,7 +13,7 @@ public class Main{
         JFrame window = new JFrame("Flappy !");
         Path flappyPath= new Path();
         Model flappy= new Model(flappyPath);
-        View flappyView=  new View(flappy, flappyPath);
+        View flappyView=  new View(flappy,flappyPath);
 
         //this call adds the mouse listener to the window
         Controller flappyController= new Controller(flappyView, window);

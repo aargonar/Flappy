@@ -11,6 +11,11 @@ public class RefreshView extends Thread{
         while(true){
             view.revalidate();
             view.repaint();
+            try {
+                sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
