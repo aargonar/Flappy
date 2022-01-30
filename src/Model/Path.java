@@ -1,4 +1,6 @@
 package Model;
+import Controller.RefreshPath;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -116,10 +118,12 @@ public class Path {
             }
             Point pointAhead = new Point(this.pointList.get(i));
             Point pointBehind = new Point(this.pointList.get(i - 1));
+            int flappyCenterX=this.model.getFlappyX()+this.model.FlappyWidth/2;
+            int flappyCenterY=this.model.getFlappyY()+this.model.FlappyHeight/2;
 
             float p = (pointAhead.y - pointBehind.y) / (float) (pointAhead.x - pointBehind.x);
-            float y = pointBehind.y + p * (this.model.getFlappyX() - pointBehind.x);
-            boolean collisionCondition = y > (this.model.getFlappyY()) && y < (this.model.getFlappyY() + this.model.FlappyHeight);
+            float y = pointBehind.y + p * (flappyCenterX - pointBehind.x);
+            boolean collisionCondition = y > (flappyCenterY-this.model.FlappyHeight/2) && y < (flappyCenterY+this.model.FlappyHeight/2);
             if (!collisionCondition) {
                 this.collisions += 1;
             }

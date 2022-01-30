@@ -1,4 +1,6 @@
-package Model;
+package Controller;
+
+import Model.BirdView;
 
 public class BirdGenerator extends  Thread{
     private BirdView birdview;

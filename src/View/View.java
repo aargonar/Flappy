@@ -76,7 +76,7 @@ public class View extends JPanel{
         else if(this.path.isGameEnded()){
             g.setColor(Color.RED);
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 60));
-            g.drawString(" YOUR OVAL IS TOO DAMAGED, YOU LOST!",500,300);
+            g.drawString("YOU LOST!",500,300);
         }
         else{
             g.setColor(Color.WHITE);

@@ -1,4 +1,6 @@
-package Model;
+package Controller;
+
+import Model.Path;
 
 /**Cette classe est une Thread qui descends le modele flappy en X
  * quand l'utilisateur click pas sur l'ecran*/
