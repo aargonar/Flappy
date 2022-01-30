@@ -11,11 +11,17 @@ import java.util.Random;
 public class BirdView {
     /**Attributs */
     private ArrayList<Bird> birds;
+    /** Variables */
+    private static final Random rand= new Random();
+
+
 
     public BirdView(){
         this.birds= new ArrayList<>();
-        this.birds.add(new Bird());
+        (new BirdGenerator(this)).start();
+
     }
+
     public void updateBirds(){
         ListIterator<Bird> iter = this.birds.listIterator();
         while(iter.hasNext()){
@@ -23,9 +29,13 @@ public class BirdView {
                 iter.remove();
             }
         }
+    }
 
-
-
+    public void generateBird(){
+        int random = rand.nextInt(10000);
+        if (random>990){
+            this.birds.add(new Bird());
+        }
     }
 
     public void drawBirds(Graphics g) {

@@ -1,21 +1,25 @@
 package View;
 
-public class RefreshView extends Thread{
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RefreshView implements ActionListener {
     public View view;
+    private Timer timer;
+
 
     public RefreshView(View viewtorefresh){
-    this.view=viewtorefresh;}
+    this.view=viewtorefresh;
+        this.timer = new Timer(50, this);
+        timer.start();
+    }
 
-    @Override
-    public void run(){
-        while(true){
+    public void actionPerformed(ActionEvent event){
+        if(event.getSource()==timer) {
             view.revalidate();
             view.repaint();
-            try {
-                sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+
     }
 }

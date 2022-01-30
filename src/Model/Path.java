@@ -23,6 +23,8 @@ public class Path {
     public static int StepDistance= PointSpacing/25;
     //tirage aleatoire
     public static final Random rand= new Random();
+    //Nombre de collisons avant d'arreter le jeu
+    public static int maxNumberOfCollisions= 25;
 
 
     /**Constructeur initialise le Path avec les PointSpacing entre chaque point et cree le Thread qui va refraichir le path*/
@@ -88,9 +90,12 @@ public class Path {
             p.x-=StepDistance;
         }
     }
-
+    /** Termine le jeu:
+     * out: false si l'oval a collisioné plus un certain nombre de fois
+     *      true sinon
+     **/
     public boolean isGameEnded(){
-        return this.collisions>=10;
+        return this.collisions>=maxNumberOfCollisions;
     }
     /** REMINDER: game start is detected with a positive score from the path.getScore function
      *  REMINDER: the score is initialized at -5,

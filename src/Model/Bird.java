@@ -16,7 +16,7 @@ public class Bird extends Thread{
 
 
     public Bird(){
-        this.position= 700;
+        this.position= 1000;
         this.etat=0;
         this.delai= rand.nextInt(600-400)+400;
 
@@ -31,7 +31,6 @@ public class Bird extends Thread{
         int[] randHauteur={hauteur1, hauteur2};
         this.hauteur= randHauteur[rand.nextInt(randHauteur.length)];
 
-        System.out.println(hauteur);
         this.start();
     }
 
@@ -50,8 +49,8 @@ public class Bird extends Thread{
 
     @Override
     public void run(){
-        while(isVisible()){
-            this.position-=200;
+        while(this.isVisible()){
+            this.position-=100;
             this.etat= (this.etat+1)%8;
             try {
                 sleep(delai);

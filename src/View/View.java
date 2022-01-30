@@ -5,9 +5,6 @@ import Model.BirdView;
 import Model.Path;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /** Cette classe permet de dessiner */
@@ -26,7 +23,7 @@ public class View extends JPanel{
         this.model = e;
         this.path=p;
         setPreferredSize(new Dimension(Model.ScreenWidth, Model.ScreenHeight));
-        (new RefreshView(this)).start();
+        RefreshView rv= new RefreshView(this);
     }
 
     private void drawOval(Graphics g){
@@ -79,7 +76,7 @@ public class View extends JPanel{
         else if(this.path.isGameEnded()){
             g.setColor(Color.RED);
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 60));
-            g.drawString(" YOU LOST !",500,300);
+            g.drawString(" YOUR OVAL IS TOO DAMAGED, YOU LOST!",500,300);
         }
         else{
             g.setColor(Color.WHITE);
@@ -93,6 +90,8 @@ public class View extends JPanel{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.clearRect(0, 0, 1000, 600);
+        /**Draw the decorative birds */
+        this.birdview.drawBirds(g);
         /** Draws Flappy ! */
         drawOval(g);
         /** Draws the line */
@@ -101,8 +100,7 @@ public class View extends JPanel{
         drawMarkers(g, this.path.isGameStarted());
         /**Affichage du texte du debut */
         drawGameStart(g, this.path.getScore());
-        /**Draw the decorative birds */
-        this.birdview.drawBirds(g);
+
     }
 
 }
