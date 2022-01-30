@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Model;
 
-/**Cette classe est une Thread qui descends le modele flappy en X
+/**Cette classe est une Thread qui refraiche le modele: descends le modele flappy en Y
  * quand l'utilisateur click pas sur l'ecran*/
 public class Fly extends Thread{
     /**Attribut*/
@@ -16,8 +16,8 @@ public class Fly extends Thread{
     public void run(){
         /**Moves flappy downwards contantly*/
         while(true){
-            model.moveDownn();
-            model.checkCollision();
+            model.moveDown();
+
             /**Attends quelques secondes avant de descendre flappy*/
             try {
                 Thread.sleep(100);

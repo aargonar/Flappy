@@ -13,10 +13,10 @@ public class RefreshPath extends Thread{
     @Override
     public void run(){
         /**Moves flappy downwards contantly*/
-        while(true){
+        while(!this.path.isGameEnded()){
             path.moveForward();
-            //TODO check for collision
             path.updatePath();
+            path.checkCollisions();
             /**Attends quelques secondes avant de descendre flappy*/
             try {
                 Thread.sleep(50);
