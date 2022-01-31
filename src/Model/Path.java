@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/**Classe de la ligne brisée */
 public class Path {
     /**Attributs */
     //Liste de points
@@ -106,6 +106,7 @@ public class Path {
     public boolean isGameStarted(){
         return this.score>=0;
     }
+    /**Méthode qui evalue si il y a eu une collision entre l'ovale et la ligne brisée*/
     public void checkCollisions(){
         /**Checks for collisions only if the game has started and has not ended */
         if (isGameStarted() && !isGameEnded()){

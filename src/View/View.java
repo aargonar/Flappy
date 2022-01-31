@@ -25,11 +25,11 @@ public class View extends JPanel{
         setPreferredSize(new Dimension(Model.ScreenWidth, Model.ScreenHeight));
         RefreshView rv= new RefreshView(this);
     }
-
+    /** Dessine l'ovale*/
     private void drawOval(Graphics g){
         g.drawOval(model.getFlappyX(), model.getFlappyY(), Model.FlappyWidth, Model.FlappyHeight);
     }
-
+    /** dessine la ligne brisée*/
     private void drawPath(Graphics g){
         g.setColor(Color.RED);
         //Dessine jusqu'a la coord en dehors du window pour simuler continuation de la ligne vers l'infinie
@@ -37,7 +37,7 @@ public class View extends JPanel{
             g.drawLine(this.path.getPointList().get(i).x,this.path.getPointList().get(i).y,this.path.getPointList().get(i+1).x,this.path.getPointList().get(i+1).y);
         }
     }
-
+    /**Dessine les marqueurs*/
     private void drawMarkers(Graphics g, boolean gameStarted) {
         //si le jeu n'as pas commencé cacher le score avec la couleur blanche
         if (!gameStarted){
@@ -51,28 +51,36 @@ public class View extends JPanel{
         g.drawString("SCORE:" + this.path.getScore(),50,50);
         g.drawString("COLLISIONS: "+this.path.getCollisions(), 250, 50);
     }
-
+    /** Dessine le texte du debut du jeu */
     private void drawGameStart(Graphics g, int score){
+        //s'il restent 4 secondes pour le debut du jeu
         if(score==-4){
             g.setColor(new Color(154,205,50) );
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 50));
             g.drawString("GAME STARTS IN 3 !",400,450);
         }
+        //s'il restent 3 secondes pour le debut du jeu
+
         else if(score==-3){
             g.setColor(Color.ORANGE);
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 50));
             g.drawString("GAME STARTS IN 2 !",400,490);
         }
+        //s'il restent 2 secondes pour le debut du jeu
+
         else if(score==-2){
             g.setColor(new Color(70,130,180));
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 50));
             g.drawString("GAME STARTS IN 1 !",400,530);
         }
+        //s'il restent 1 seconde pour le debut du jeu
+
         else if(score==-1){
             g.setColor(new Color(0,100,0));
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 50));
             g.drawString(" GOOOOO !",500,490);
         }
+        //si on a perdu et le jeu est fini
         else if(this.path.isGameEnded()){
             g.setColor(Color.RED);
             g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 60));
